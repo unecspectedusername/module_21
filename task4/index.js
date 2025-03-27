@@ -10,5 +10,5 @@ const promise = new Promise((resolve, reject) => {
 })
 
 promise
-    .then(m => console.log(m))
-    .catch(e => console.log(e))
+    .then(console.log)
+    .catch(console.log)
