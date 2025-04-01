@@ -5,6 +5,7 @@ button.addEventListener('click', getContent)
 const preloader = () => {
     return createElement('div', 'preloader');
 }
+
 async function getContent() {
     const userId = document.querySelector('input').value
     if (!userId) {
@@ -22,12 +23,12 @@ async function getContent() {
         const list = createTaskList(tasks)
         showContent(list)
     } else {
-        console.log(tasks)
         const error = createError(tasks)
         showContent(error)
     }
 
 }
+
 async function getTasks(userId) {
     try {
         showContent(preloader())
@@ -42,6 +43,7 @@ async function getTasks(userId) {
         return e;
     }
 }
+
 function createElement(tag, ...classNames) {
     const element = document.createElement(tag);
     if (classNames) {
@@ -49,6 +51,7 @@ function createElement(tag, ...classNames) {
     }
     return element;
 }
+
 function createTaskList(tasks) {
     const list = createElement('ul', 'content__list');
     for (const task of tasks) {
@@ -71,6 +74,7 @@ function createTaskList(tasks) {
     }
     return list
 }
+
 function showContent(content) {
     let section = document.querySelector('.content')
     if (section) {
@@ -81,6 +85,7 @@ function showContent(content) {
     const main = document.querySelector('main')
     main.appendChild(section)
 }
+
 function createError(message) {
     const error = createElement('div', 'error')
     error.textContent = message;

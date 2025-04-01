@@ -11,7 +11,6 @@
     transition-duration: 0.2s;
 }
 
-
 body {
     display: flex;
     justify-content: center;
@@ -44,7 +43,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     row-gap: 0.25rem;
 }
 
@@ -52,11 +51,6 @@ main {
     text-align: center;
     font-size: 1.25rem;
     color: var(--color-blue);
-}
-
-.request__input-wrapper {
-    width: 100%;
-    position: relative;
 }
 
 .request__input, .request__button {
@@ -69,15 +63,24 @@ main {
     background: var(--color-grey);
     border: none;
     box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+}
+
+.request__input:invalid {
+    border: 1px solid var(--color-orange);
 }
 
 .request__button {
-    position: absolute;
-    top: 0;
-    right: 0;
     border: none;
     color: white;
     background: var(--color-orange);
+    padding-inline: 20%;
+}
+
+.request__label {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+    opacity: 0.8;
 }
 
 button:hover {
@@ -107,55 +110,43 @@ button:hover {
     width: 100%;
 }
 
-.content__list {
-    list-style: none;
-    padding: 0;
-    font-size: 0.9rem;
+.image-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.content__list-element {
-    padding-block: 0.5rem;
+.image-gallery__tile {
+    max-height: 100%;
+    min-width: 40%;
+    vertical-align: bottom;
+    margin: 1%;
+    flex-grow: 1;
 }
 
-.content__checkbox-label {
-    display: grid;
-    grid-template-columns: 1em auto;
-    column-gap: 2rem;
+@keyframes loadingGradient {
+    0% {
+        background-position: 0px 0;
+    }
+    100% {
+        background-position: 100em 0;
+    }
 }
 
-.content__checkbox {
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: #fff;
-    margin: 0;
-    font: inherit;
-    width: 2rem;
-    height: 2rem;
-    border: 1px solid var(--color-orange);
-    border-radius: 100%;
-    transform: translateY(-0.075em);
-    display: grid;
-    place-content: center;
+.preloader-background {
+    animation-duration: 8s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: loadingGradient;
+    animation-timing-function: linear;
+    background: #fff;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    height: 100%;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
 }
 
-.content__checkbox::before {
-    content: "";
-    width: 2rem;
-    height: 2rem;
-    background: url("./check.svg");
-    transition: 120ms transform ease-in-out;
-    transform: scale(0);
-}
-
-.content__checkbox:checked::before {
-    transform: scale(1);
-}
-
-.content__text {
-    align-content: center;
-}
-
-.content__text--completed {
-    text-decoration: line-through;
-    opacity: 0.3;
+.error__message {
+    color: var(--color-orange);
+    text-align: center;
 }
